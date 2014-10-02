@@ -10,8 +10,10 @@ import java.util.Calendar;
 
 
 /**
+ * This class represents a receipt in a PoS system situation.
  *
- * @author dominicalaus
+ * @author Michael Carpenter, mcarpenter5@my.wctc.edu
+ * @version 1.00
  */
 public class Receipt implements ReceiptStrategy {
     private static int receiptNo;
@@ -22,9 +24,11 @@ public class Receipt implements ReceiptStrategy {
     private double tax=.051;
     private double totalDueBeforeTax;
     private double taxes;
-    private int storeNumber=1311;
+    private String storeNumber="1311";
     
     public static int receiptNumber = 1;
+
+   
     
     public Receipt(String custId, DatabaseAccessStrategy db) {
         this.db = db;
@@ -33,11 +37,14 @@ public class Receipt implements ReceiptStrategy {
         
     }
 
-    public int getStoreNumber() {
+    public String getStoreNumber() {
         return storeNumber;
     }
 
-    public void setStoreNumber(int storeNumber) {
+    public void setStoreNumber(String storeNumber) {
+        if (storeNumber == null || storeNumber.isEmpty()){
+            throw new IllegalArgumentException();
+        }
         this.storeNumber = storeNumber;
     }
 
@@ -46,6 +53,9 @@ public class Receipt implements ReceiptStrategy {
     }
 
     public void setTax(double tax) {
+        if (tax>0 || tax <1){
+            throw new IllegalArgumentException();
+        }
         this.tax = tax;
     }
     /**

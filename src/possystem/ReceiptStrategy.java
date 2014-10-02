@@ -12,5 +12,6 @@ package possystem;
 public interface ReceiptStrategy {
 
    public abstract void printReceipt();
+   
     
 }
