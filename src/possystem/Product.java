@@ -41,6 +41,9 @@ public class Product {
     }
 
     public void setProductPrice(double productPrice) {
+        if(productPrice <=0){
+            throw new IllegalArgumentException();
+        }
         this.productPrice = productPrice;
     }
 
@@ -49,6 +52,9 @@ public class Product {
     }
 
     public void setProductDescription(String productDescription) {
+        if(productDescription == null || productDescription.isEmpty()){
+            throw new IllegalArgumentException();
+        }
         this.productDescription = productDescription;
     }
 
@@ -61,6 +67,11 @@ public class Product {
     }
 
     public void setDiscount(DiscountStrategy ds) {
+        if(ds==null){
+            throw new IllegalArgumentException();
+        }
+            
+        
         this.discount = ds;
     }
     

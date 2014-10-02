@@ -65,6 +65,9 @@ public class Receipt implements ReceiptStrategy {
      */
     
      public void addLineItem(double qty, String productId){ 
+          if (qty < 0 || productId == null || productId.isEmpty()){
+            throw new IllegalArgumentException();
+        }
         LineItem item = new LineItem(productId,db,qty);
         addToArray(item);
         

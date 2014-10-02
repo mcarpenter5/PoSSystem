@@ -18,6 +18,9 @@ public class FakeDatabaseAccess implements DatabaseAccessStrategy {
     @Override
     public Customer findCustomer(String custId)
     {
+        if(custId==null||custId.isEmpty()){
+            throw new IllegalArgumentException();
+        }
         Customer customer = null;
         for (Customer c : customers){
             if(custId.equals(c.getCustId())){
@@ -37,6 +40,9 @@ public class FakeDatabaseAccess implements DatabaseAccessStrategy {
     
     @Override
     public Product findProduct(String productId){
+        if(productId==null || productId.isEmpty()){
+            throw new IllegalArgumentException();
+        }
         Product product = null;
         for (Product p : products){
             if(productId.equals(p.getProductId())){

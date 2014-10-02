@@ -23,6 +23,9 @@ public class Customer {
     }
 
     public void setCustId(String custId) {
+        if(custId == null || custId.isEmpty()){
+            throw new IllegalArgumentException();
+        }
         this.custId = custId;
     }
 
@@ -31,6 +34,9 @@ public class Customer {
     }
 
     public void setName(String name) {
+        if(name == null || name.isEmpty()){
+            throw new IllegalArgumentException();
+        }
         this.name = name;
     }
     
